@@ -1,20 +1,16 @@
-
-
-window.onload = (function(){addText()});
-//window.onload = (function(){walkText(document.body)});
-
-function addText(){
-    var addresses = [
-        "https://www.instagram.com/tv/CKmsw1EpCWZ",
-        "https://www.instagram.com/tv/CJTpueQJF1k/",
-        "https://www.instagram.com/tv/CJmEBiTJatX/",
-    
-    ]
-    
-    var random = Math.floor(Math.random() * addresses.length);
-    console.log(random);
-    document.getElementById("content").innerHTML = `<blockquote class=\"instagram-media\" data-instgrm-permalink=\"https://www.instagram.com/tv/CKmsw1EpCWZ/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"13\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"></blockquote></blockquote><script async src=\"//www.instagram.com/embed.js\"></script>`
-    document.getElementById("content").innerHTML += `iFrame not working? Link here: <a href=\"${addresses[random]}\">watch video</a>`;
-
-    
-}
+window.onload(newDog());
+function newDog(){
+    fetch("https://dog.ceo/api/breed/corgi/images/random")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            //var content = document.getElementById("content");
+            var x = data.message;
+            //console.log(x);
+            //var toAdd = `<img src'${x}'/>`;
+            //console.log(toAdd);
+            //content.innerHTML += toAdd;
+            var image = document.getElementById("image");
+            image.src = x;
+        })
+};
